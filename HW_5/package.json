@@ -1,5 +1,5 @@
 {
-  "name": "hw_4",
+  "name": "hw_5",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,10 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
-    "dotenv": "^17.2.1",
-    "moment": "^2.30.1"
-  },
-  "devDependencies": {}
+    "dotenv": "^17.2.1"
+  }
 }
