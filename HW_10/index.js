@@ -12,12 +12,14 @@ const users = [
     username: 'user1',
     email: 'email1@email.com',
     password: bcrypt.hashSync('password1', 10),
+    role: 'admin',
   },
   {
     id: 2,
     username: 'user2',
     email: 'email2@email.com',
     password: bcrypt.hashSync('password2', 10),
+    role: 'user',
   },
 ];
 
@@ -77,6 +79,51 @@ app.put('/update-email', authenticateToken, (req, res) => {
     },
   });
 });
+
+app.delete('/delete-account', authenticateToken, (req, res) => {
+  const { id } = req.user;
+  const userIndex = users.findIndex((u) => u.id === id);
+  if (userIndex === -1) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  users.splice(userIndex, 1);
+  res.json({ message: 'Account deleted successfully' });
+});
+
+app.put('/update-role', authenticateToken, (req, res) => {
+  const { newRole } = req.body;
+  const { id } = req.user;
+  const user = users.find((u) => u.id === id);
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  if (!newRole) {
+    return res.status(400).json({ error: 'New role is required' });
+  }
+  user.role = newRole;
+  res.json({
+    message: 'Role updated successfully',
+    user: {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+    },
+  });
+})
+
+app.post('/refresh-token', (req, res) => {
+  const { token } = req.body;
+  if (!token) {
+    return res.status(401).json({ error: 'Token is required' });
+  }
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.sendStatus(403);
+    const newToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: '1h' });
+    res.json({ token: newToken });
+  });
+})
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${PORT}`);

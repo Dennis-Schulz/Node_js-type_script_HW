@@ -38,11 +38,60 @@ async function testUpdateEmail(token) {
   }
 }
 
+async function deleteUser(token) {
+  try {
+    const response = await axios.delete(BASE_URL + 'delete-account', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function updateRole(token) {
+  try {
+    const response = await axios.put(
+      BASE_URL + 'update-role',
+      {
+        newRole: 'admin',
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function refreshToken(token) {
+  try {
+    const response = await axios.post(BASE_URL + 'refresh-token', {
+      token,
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 (async () => {
   try {
     const token = await testLogin();
     if (!token) return console.log('Login failed');
-    await testUpdateEmail(token);
+    // await testUpdateEmail(token);
+    // await updateRole(token);
+    // await deleteUser(token);
+    await refreshToken(token);
   } catch (error) {
     console.error(error);
   }
