@@ -1,6 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+import Article from './models/Article.js';
+import Tag from './models/Tag.js';
+import Publisher from './models/Publisher.js';
+import Magazine from './models/Magazine.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
