@@ -1,0 +1,1 @@
+{"version":3,"file":"task_6.js","sourceRoot":"","sources":["../src/task_6.ts"],"names":[],"mappings":";AAAA,SAAS,UAAU,CAAC,OAAe;IACjC,OAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;AACvB,CAAC;AAED,UAAU,CAAC,eAAe,CAAC,CAAC","sourcesContent":["function logMesaage(message: string): void {\r\n  console.log(message);\r\n}\r\n\r\nlogMesaage('Hello, world!');\r\n"]}

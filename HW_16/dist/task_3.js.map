@@ -1,0 +1,1 @@
+{"version":3,"file":"task_3.js","sourceRoot":"","sources":["../src/task_3.ts"],"names":[],"mappings":";AAAA,SAAS,YAAY,CAAC,GAAW;IAC/B,OAAO,GAAG,GAAG,GAAG,CAAC;AACnB,CAAC;AAED,OAAO,CAAC,GAAG,CAAC,YAAY,CAAC,CAAC,CAAC,CAAC,CAAC","sourcesContent":["function squareNumber(num: number): number {\r\n  return num * num;\r\n}\r\n\r\nconsole.log(squareNumber(5));\r\n"]}

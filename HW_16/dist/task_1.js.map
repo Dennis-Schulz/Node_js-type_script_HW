@@ -1,0 +1,1 @@
+{"version":3,"file":"task_1.js","sourceRoot":"","sources":["../src/task_1.ts"],"names":[],"mappings":";AAAA,SAAS,SAAS,CAAC,IAAY;IAC7B,OAAO,CAAC,GAAG,CAAC,UAAU,IAAI,EAAE,CAAC,CAAC;AAChC,CAAC;AAED,SAAS,CAAC,MAAM,CAAC,CAAC","sourcesContent":["function greetUser(name: string): void {\r\n  console.log(`Hello, ${name}`);\r\n}\r\n\r\ngreetUser('John');\r\n"]}
