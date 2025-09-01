@@ -20,10 +20,12 @@ app.use("/products", productRouter);
 
 
 app.listen(PORT, async () => {
-try{
-    await connectDB();
-    console.log(`Server running http://localhost:${PORT}`);
-} catch (error) {
-    console.log('Database connection failed', error);
-}   
+  const [err] ?= await connectDB();
+
+  if (err) {
+    console.log('Database connection failed', err);
+    return;
+  }
+
+  console.log(`Server running http://localhost:${PORT}`);
 });
